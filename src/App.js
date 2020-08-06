@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "firebase/auth";
+import {FirebaseAuthConsumer, IfFirebaseUnAuthed} from "@react-firebase/auth";
+
+import Dashboard from "./Components/Dashboard/Dashboard";
+import SignIn from "./Components/SignIn/SignIn";
+import {FirebaseProvider} from "./Firebase/Firebase";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <FirebaseProvider>
+            <FirebaseAuthConsumer>
+                {({isSignedIn, user}) => {
+                    console.log(user)
+                    if (isSignedIn) {
+                        return (true ?
+                                <Dashboard/>
+                                :
+                                <h1>NOT ENOUGH RIGHTS</h1>
+                        );
+                    } else {
+                        return (
+                            <IfFirebaseUnAuthed>
+                                <SignIn/>
+                            </IfFirebaseUnAuthed>
+                        )
+                    }
+                }}
+            </FirebaseAuthConsumer>
+        </FirebaseProvider>
+    );
 }
 
 export default App;
