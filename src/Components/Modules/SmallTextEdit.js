@@ -9,11 +9,11 @@ export default (props) => {
 
     return (
         <TextField
-            size="small"
+            // size="small"
             label={label}
             value={value}
             type={numeric ? 'number' : 'text'}
-            style={{minWidth: 'max-content'}}
+            // style={{minWidth: 'max-content'}}
             onChange={e => props.onChange(e.target.value)}
         />
     )

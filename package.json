@@ -16,7 +16,7 @@
     "@react-firebase/firestore": "^0.5.5",
     "firebase": "^7.17.1",
     "fontsource-roboto": "^2.2.6",
-    "material-table": "^1.68.0",
+    "material-table": "1.67.1",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
